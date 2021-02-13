@@ -7,7 +7,7 @@ type DieProps = { faces: string[] }
 export function DieComp(props: {value: string}) {
   let value = props.value
   if (value.length == 1) {
-    value = "\u00A0" + value
+    // value = "\u00A0" + value
   }
   return (
     <button className="die"> {value} </button>

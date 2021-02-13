@@ -17,11 +17,10 @@ test('Matrix', () => {
   // Test all equal zero except (0, 2)
   m.set(0, 2, 99)
   m.forEach((r, c) => {
-    switch([r, c]) {
-      case [0, 2]:
-        expect(m.get(r, c)).toEqual(99)
-      default:
-        expect(m.get(r, c)).toEqual(0)
+    if (r == 0 && c == 2) {
+      expect(m.get(r, c)).toEqual(99)
+    } else {
+      expect(m.get(r, c)).toEqual(0)
     }
   })
 
