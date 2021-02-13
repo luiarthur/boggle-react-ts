@@ -1,5 +1,6 @@
 import {Matrix} from '../Matrix'
 import seedrandom from 'seedrandom'
+import * as util from '../util'
 
 test('Matrix', () => {
   // Test all equal 0.
@@ -34,9 +35,9 @@ test('Matrix', () => {
   expect(m2.get(2, 1)).toEqual(6)
 
   // Test shuffling.
-  let rng = seedrandom(0)
+  util.GLOBAL_RNG.reseed(0)
   let m2old = Matrix.fromArray(3, 2, m2.vec())
-  let m3 = m2.shuffled(rng)
+  let m3 = m2.shuffled()
   expect(m3.get(0, 0)).not.toEqual(m2.get(0, 0))
 
   // shuffled should not mutate.
@@ -45,6 +46,6 @@ test('Matrix', () => {
   })
 
   // shuffle should mutate
-  m2.shuffle(rng)
+  m2.shuffle()
   expect(m2old.get(0, 0)).not.toEqual(m2.get(0, 0))
 });

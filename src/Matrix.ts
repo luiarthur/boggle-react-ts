@@ -48,13 +48,13 @@ export class Matrix<T> {
     return this.rows.flat();
   }
 
-  shuffled(rng: util.RNG = util.GLOBAL_RNG) {
-    let v = util.shuffle(this.vec(), rng)
+  shuffled() {
+    let v = util.shuffle(this.vec())
     return Matrix.fromArray(this.nrow, this.ncol, v)
   }
 
-  shuffle(rng: util.RNG = util.GLOBAL_RNG) {
-    let s = this.shuffled(rng)
+  shuffle() {
+    let s = this.shuffled()
     this.forEach((r, c) => {
       this.set(r, c, s.get(r, c))
     })

@@ -2,10 +2,22 @@ import seedrandom from 'seedrandom'
 
 export type RNG = () => number
 
-export const GLOBAL_RNG = seedrandom()
+export class AppRNG {
+  rng: RNG
 
-export function randint(a: number, b: number, rng: RNG = GLOBAL_RNG) {
-  return Math.floor(rng() * (b - a + 1)) + a
+  constructor() {
+    this.rng = seedrandom()
+  }
+
+  reseed(seed: number) {
+    this.rng = seedrandom(seed.toString())
+  }
+}
+
+export const GLOBAL_RNG = new AppRNG()
+
+export function randint(a: number, b: number) {
+  return Math.floor(GLOBAL_RNG.rng() * (b - a + 1)) + a
 }
 
 export function sum(x: number[]) {
@@ -34,9 +46,9 @@ export function std(x: number[]) {
   return Math.sqrt(variance(x))
 }
 
-export function shuffle<T>(arr: Array<T>, rng: RNG = GLOBAL_RNG) {
+export function shuffle<T>(arr: Array<T>) {
   for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
+    const j = Math.floor(GLOBAL_RNG.rng() * (i + 1));
     [arr[i]!, arr[j]!] = [arr[j]!, arr[i]!];
   }
   return arr
