@@ -20,6 +20,22 @@ export function randint(a: number, b: number) {
   return Math.floor(GLOBAL_RNG.rng() * (b - a + 1)) + a
 }
 
+export function shuffle<T>(arr: Array<T>) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(GLOBAL_RNG.rng() * (i + 1));
+    [arr[i]!, arr[j]!] = [arr[j]!, arr[i]!];
+  }
+  return arr
+}
+
+export function isSquare(x: number) {
+  let sqrtx = Math.sqrt(x)
+  return Math.floor(sqrtx) == sqrtx
+}
+
+
+/** Code below is mostly for tests. */
+
 export function sum(x: number[]) {
   let s = 0
   x.forEach(xi => s += xi)
@@ -44,17 +60,4 @@ export function variance(x: number[]) {
 
 export function std(x: number[]) {
   return Math.sqrt(variance(x))
-}
-
-export function shuffle<T>(arr: Array<T>) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(GLOBAL_RNG.rng() * (i + 1));
-    [arr[i]!, arr[j]!] = [arr[j]!, arr[i]!];
-  }
-  return arr
-}
-
-export function isSquare(x: number) {
-  let sqrtx = Math.sqrt(x)
-  return Math.floor(sqrtx) == sqrtx
 }

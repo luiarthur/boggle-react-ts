@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+/** Arthur Lui: */
+.die {
+  font-family: monospace;
+  font-size: x-large;
+}
+
+#solution {
+  font-size: large;
+}
+
+body {
+  padding: 5%;
+}

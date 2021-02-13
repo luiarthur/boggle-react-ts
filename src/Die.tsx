@@ -1,32 +1,31 @@
 import React from 'react';
 import * as util from './util'
+import './App.css'
 
 type DieProps = { faces: string[] }
 
-export function DieComp(props: {value: string}) { // no props, only state.
-  return <button> {props.value} </button>
+export function DieComp(props: {value: string}) {
+  let value = props.value
+  if (value.length == 1) {
+    value = "\u00A0" + value
+  }
+  return (
+    <button className="die"> {value} </button>
+  )
 }
 
 export class Die {
   numFaces: number
   faces: string[]
-  value: string
-
-  _roll(faces: string[]) {
-    const idx = util.randint(0, faces.length- 1)
-    return faces[idx]
-  }
 
   constructor(faces: string[]) {
     this.faces = faces
     this.numFaces = faces.length
-    this.value = this._roll(faces)
   }
 
   roll() {
-    let out = new Die(this.faces)
-    out.value = this._roll(this.faces)
-    return out
+    const idx = util.randint(1, this.numFaces)
+    return this.faces[idx - 1]
   }
 }
 

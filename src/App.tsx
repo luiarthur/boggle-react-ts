@@ -4,14 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 // import { Seeder } from './Seeder'
 import { Die, dice16, DieComp } from './Die'
+import { scrabbleDict } from './scrabble-dict'
 import { Pair } from './Pair'
 import * as util from './util'
 
+
 function App() {
+  const dict = scrabbleDict
   let x = [1,2,3,4,5]
   let p = new Pair(3,5)
-  let [dice, setDice] = useState(dice16.map(faces => new Die(faces)))
-  let dieComps = dice.map(die => <DieComp value={die.value}/>)
+  let dice = dice16.map(faces => new Die(faces))
+  let [diceVal, setDiceVal] = useState(dice.map(_ => _.roll()))
+  let dieComps = diceVal.map(val => <DieComp value={val}/>)
   // util.GLOBAL_RNG.reseed(0)
 
   return (
@@ -23,10 +27,10 @@ function App() {
         <li>variance: {util.variance(x)}</li>
         <li>Pair: ({[p.x, p.y].join(',')})</li>
 
-        {dieComps}
-
+        <button onClick={() => setDiceVal(dice.map(_ => _.roll()))}>Shuffle</button>
         <br/><br/>
-        <button onClick={() => setDice(dice.map(_ => _.roll()))}>Shuffle</button>
+        {dieComps}
+        <h1>{dict[12351]}</h1>
     </div>
   );
 }
