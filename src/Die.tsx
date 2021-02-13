@@ -2,32 +2,37 @@ import React from 'react';
 import * as util from './util'
 
 type DieProps = { faces: string[] }
-export class Die extends React.Component<DieProps, {value: string}> {
+type DieState = { value: string }
+
+export class DieComp extends React.Component<DieState> { // no props, only state.
+  constructor(props: DieState) {
+    super(props)
+  }
+  render() {
+    return <button> {this.props.value} </button>
+  }
+}
+
+export class Die {
   numFaces: number
   faces: string[]
+  value: string
 
-  constructor(props: DieProps) {
-    super(props)
-    this.faces = props.faces
-    this.numFaces = this.faces.length
-    this.state = {value: this._roll(this.faces)}
-  }
-
-  roll() {
-    this.setState(() => {
-      value: this._roll(this.faces)
-    })
-  }
-
-  private _roll(faces: string[]): string {
+  _roll(faces: string[]) {
     const idx = util.randint(0, faces.length- 1)
     return faces[idx]
   }
 
-  render() {
-    return (
-      <button> {this.state.value} </button>
-    )
+  constructor(faces: string[]) {
+    this.faces = faces
+    this.numFaces = faces.length
+    this.value = this._roll(faces)
+  }
+
+  roll() {
+    let out = new Die(this.faces)
+    out.value = this._roll(this.faces)
+    return out
   }
 }
 
