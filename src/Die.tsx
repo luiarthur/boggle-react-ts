@@ -2,15 +2,9 @@ import React from 'react';
 import * as util from './util'
 
 type DieProps = { faces: string[] }
-type DieState = { value: string }
 
-export class DieComp extends React.Component<DieState> { // no props, only state.
-  constructor(props: DieState) {
-    super(props)
-  }
-  render() {
-    return <button> {this.props.value} </button>
-  }
+export function DieComp(props: {value: string}) { // no props, only state.
+  return <button> {props.value} </button>
 }
 
 export class Die {
