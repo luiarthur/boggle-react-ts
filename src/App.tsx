@@ -25,7 +25,7 @@ function readTextFile(path: string) {
   })
   return dat.split("\n")
 }
-const dictpath = "/assets/scrabble_dict.txt"
+const dictpath = "/assets/scrabble_dict.txt"  // NOTE: do I need baseURL prepended?
 const dict = readTextFile(dictpath)
 
 // const dict = scrabbleDict
