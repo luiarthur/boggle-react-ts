@@ -23,6 +23,12 @@ const dict = scrabbleDict
 console.log(dict.length)
 const dice = dice16.map(faces => new Die(faces))
 
+const shuffleStyle = {
+  borderRadius: "25px",
+  border: "none",
+  background: "darkgrey"
+}
+
 function App() {
   let [diceVal, setDiceVal] = useState(dice.map(_ => _.roll()))
   let dieComps = diceVal.map(val => <DieComp value={val}/>)
@@ -40,7 +46,7 @@ function App() {
       <br/> {dieComps} <br/>
 
       <br/>
-      <button onClick={shuffleDice}> Shuffle </button>
+      <button onClick={shuffleDice} style={shuffleStyle}> Shuffle </button>
       <br/>
 
       <br/>

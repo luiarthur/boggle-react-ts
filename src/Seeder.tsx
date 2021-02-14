@@ -19,11 +19,11 @@ export function Seeder() {
   }
 
   let css = {
-    "border-radius": "10px",
+    borderRadius: "10px",
     background: "CornflowerBlue",
     color: "white",
     padding: "3px",
-    "margin-right": "10px"
+    marginRight: "10px"
   }
 
   return (
@@ -31,7 +31,7 @@ export function Seeder() {
       <label onClick={toggleSeedDisplay} style={css}> Enter seed </label>
       <input type="text" id="rngSeed" name="rngSeed"
              onChange={setGlobalSeed}
-             style={{display: seedDisplay}} />
+             style={{display: seedDisplay, borderRadius: "10px"}} />
     </form>
   )
 }
