@@ -9,8 +9,8 @@ export class AppRNG {
     this.rng = seedrandom()
   }
 
-  reseed(seed: number) {
-    this.rng = seedrandom(seed.toString())
+  reseed(seed: string) {
+    this.rng = seedrandom(seed)
   }
 }
 

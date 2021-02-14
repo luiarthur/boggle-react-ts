@@ -2,7 +2,7 @@ import seedrandom from 'seedrandom'
 import * as util from '../util'
 
 test('util', () => {
-  util.GLOBAL_RNG.reseed(0)
+  util.GLOBAL_RNG.reseed("0")
   let v = Array(100000).fill(0).map(_ => util.randint(1, 6))
   const vmean = util.mean(v)
   const vmean10 = util.mean(v.slice(0, 10))
