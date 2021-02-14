@@ -15,6 +15,7 @@ export class AppRNG {
 }
 
 export const GLOBAL_RNG = new AppRNG()
+export function reseed(seed: string) { GLOBAL_RNG.reseed(seed) }
 
 export function randint(a: number, b: number) {
   return Math.floor(GLOBAL_RNG.rng() * (b - a + 1)) + a
