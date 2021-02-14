@@ -19,7 +19,6 @@
     }
   ],
   "start_url": ".",
-  "dictionary": "assets/scrabble_dict.txt",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

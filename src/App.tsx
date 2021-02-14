@@ -8,27 +8,9 @@ import { Pair } from './Pair'
 import * as util from './util'
 import $ from 'jquery'
 import {Seeder} from './Seeder'
+import * as scrabbleDict from './scrabble-dict.json'
 
-// Would love for this to work. But does not...
-// async function readTextFile(path: string) {
-//   let response = await fetch(path)
-//   let data = await response.text()
-//   return data.split(",")
-// }
-function readTextFile(path: string) {
-  var dat = ""
-  $.ajax({
-    url: path,
-    type: "GET",
-    success: (d) => {dat = d},
-    async: false  // why is this deprecated???
-  })
-  return dat.split("\n")
-}
-const dictpath = "/assets/scrabble_dict.txt"  // NOTE: do I need baseURL prepended?
-const dict = readTextFile(dictpath)
-
-// const dict = scrabbleDict
+const dict = scrabbleDict.scrabbleDict
 console.log(dict.length)
 const dice = dice16.map(faces => new Die(faces))
 
