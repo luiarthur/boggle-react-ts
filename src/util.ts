@@ -21,10 +21,10 @@ export function randint(a: number, b: number) {
   return Math.floor(GLOBAL_RNG.rng() * (b - a + 1)) + a
 }
 
-export function shuffle<T>(arr: Array<T>) {
+export function shuffle<T>(arr: Array<T>): Array<T> {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(GLOBAL_RNG.rng() * (i + 1));
-    [arr[i]!, arr[j]!] = [arr[j]!, arr[i]!];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr
 }
