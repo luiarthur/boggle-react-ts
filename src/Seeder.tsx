@@ -4,18 +4,21 @@ import * as util from './util'
 export function Seeder() {
   let [seedDisplay, setSeedDisplay] = useState("none")
   let [seed, setSeed] = useState("")
+  let [msg, setMsg] = useState("Enter seed")
 
   function toggleSeedDisplay() {
     if (seedDisplay == "none") {
       setSeedDisplay("inline")
+      setMsg("Enter seed")
     } else {
       setSeedDisplay("none")
+      seed > "" && util.reseed(seed) // submit seed
+      setMsg("Using seed: " + seed)
     }
   }
 
   function setGlobalSeed(e) {
     setSeed(e.target.value)
-    seed > "" && util.reseed(seed)
   }
 
   let css = {
@@ -28,7 +31,7 @@ export function Seeder() {
 
   return (
     <form>
-      <label onClick={toggleSeedDisplay} style={css}> Enter seed </label>
+      <label onClick={toggleSeedDisplay} style={css}> {msg} </label>
       <input type="text" id="rngSeed" name="rngSeed"
              onChange={setGlobalSeed}
              style={{display: seedDisplay, borderRadius: "10px"}} />

@@ -6,6 +6,7 @@ import { Die, dice16, DieComp } from './Die'
 // import { scrabbleDict } from './scrabble-dict'
 import { Pair } from './Pair'
 import * as util from './util'
+import {zipWithIndex} from './util'
 import $ from 'jquery'
 import {Seeder} from './Seeder'
 import * as scrabbleDict from './scrabble-dict.json'
@@ -22,7 +23,7 @@ const shuffleStyle = {
 
 function App() {
   let [diceVal, setDiceVal] = useState(dice.map(_ => _.roll()))
-  let dieComps = diceVal.map(val => <DieComp value={val}/>)
+  let dieComps = zipWithIndex(diceVal).map(z => <DieComp value={z[0]} key={z[1]} />)
 
   function shuffleDice() {
     setDiceVal(dice.map(_ => _.roll()))
@@ -41,10 +42,11 @@ function App() {
       <br/>
 
       <br/>
-      <h3>{dict[util.randint(0, dict.length - 1)]}</h3>
+      <Seeder/>
       <br/>
 
-      <Seeder/>
+      <h3>{dict[util.randint(0, dict.length - 1)]}</h3>
+
     </div>
   );
 }

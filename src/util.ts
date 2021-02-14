@@ -34,6 +34,14 @@ export function isSquare(x: number) {
   return Math.floor(sqrtx) == sqrtx
 }
 
+export function zipWithIndex<T>(arr: Array<T>) {
+  let result = []
+  for (let i = 0, _aLength = arr.length; i < _aLength; i++) {
+    let element = arr[i]
+    result.push([element, i])
+  }
+  return result
+}
 
 /** Code below is mostly for tests. */
 
