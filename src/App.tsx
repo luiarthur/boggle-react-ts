@@ -35,18 +35,17 @@ function App() {
         <h1>WIP</h1>
       </header>
 
-      <br/> {dieComps} <br/>
+      <br/>
+      {dieComps}
+      <br/>
 
       <br/>
       <button onClick={shuffleDice} style={shuffleStyle}> Shuffle </button>
       <br/>
 
-      <br/>
-      <Seeder/>
-      <br/>
+      <br/> <Seeder/> <br/>
 
-      <h3>{dict[util.randint(0, dict.length - 1)]}</h3>
-
+      <h3> {dict[util.randint(0, dict.length - 1)]} </h3>
     </div>
   );
 }
