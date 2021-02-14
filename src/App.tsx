@@ -5,11 +5,14 @@ import './App.css';
 import { Die, dice16, DieComp } from './Die'
 // import { scrabbleDict } from './scrabble-dict'
 import { Pair } from './Pair'
+import { Board } from './Board'
 import * as util from './util'
 import {zipWithIndex} from './util'
 import $ from 'jquery'
 import {Seeder} from './Seeder'
 import * as scrabbleDict from './scrabble-dict.json'
+
+const b = Board
 
 const dict = scrabbleDict.scrabbleDict
 console.log(dict.length)
@@ -45,7 +48,7 @@ function App() {
 
       <br/> <Seeder/> <br/>
 
-      <h3> {dict[util.randint(0, dict.length - 1)]} </h3>
+      {console.log("sanity check: " + dict[util.randint(0, dict.length - 1)])}
     </div>
   );
 }
