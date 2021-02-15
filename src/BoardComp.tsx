@@ -24,7 +24,8 @@ export function SolveButton(props: {generateSolution: () => void, solution: stri
                             solViz: boolean}) {
   const css = {
     borderRadius: "5px",
-    backgroundColor: "lightgreen",
+    backgroundColor: "CornFlowerblue",
+    color: "White",
     border: "none"
   }
 

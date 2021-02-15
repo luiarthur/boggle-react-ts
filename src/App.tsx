@@ -17,6 +17,7 @@ function App() {
   const dice = dice16.map(faces => new Die(faces))
   const minLetters = 3
 
+  const [seedViz, setSeedViz] = useState(false)
   const [board, setBoard] = useState(new Board(dice, dict, minLetters))
   const [solution, setSolution] = useState("")
   const [numWords, setNumWords] = useState(0)
@@ -25,7 +26,9 @@ function App() {
   const shuffleStyle = {
     borderRadius: "5px",
     border: "none",
-    background: "pink"
+    color: "white", 
+    background: "CornFlowerBlue",
+    margin: "20px"
   }
 
   let [letters, setLetters] = useState(board.letters)
@@ -37,6 +40,7 @@ function App() {
     setIsSolved(false)
     setSolViz(false)
     setSolution("")
+    setSeedViz(false)
   }
 
   function generateSolution() {
@@ -51,18 +55,15 @@ function App() {
     }
   }
 
+  function showSeeder() {
+    setSeedViz(true)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Boggle</h1>
-      </header>
+      <Seeder seedViz={seedViz} showSeeder={showSeeder} />
 
-      <br/>
-      <Seeder/>
-      <br/>
       <button onClick={shakeBoard} style={shuffleStyle}> Shuffle </button>
-      <br/>
-      <br/>
 
       {/* <br/> {dieComps} <br/> */}
       <BoardComp board={board} />

@@ -2,48 +2,28 @@ import React, {useState} from 'react'
 import * as util from './util'
 
 // TODO: Refactor -- move states out into `App`. On boardShuffle, hide seed.
-export function Seeder() {
-  let [seedDisplay, setSeedDisplay] = useState("none")
-  let [seed, setSeed] = useState("")
-  let [msg, setMsg] = useState("Enter seed")
+export function Seeder(props: {seedViz: boolean, showSeeder: () => void}) {
 
-  function toggleSeedDisplay() {
-    if (seedDisplay == "none") {
-      setSeedDisplay("inline")
-      setMsg("Enter seed")
+  function reseed(e) {
+    const value = e.target.value
+    if (value == "") {
+      util.reseed(Math.random().toString())
     } else {
-      setSeedDisplay("none")
-      if (seed > "") {
-        util.reseed(seed) // submit seed
-        setMsg("Using seed: " + seed)
-      }
+      util.reseed(value)
     }
   }
 
-  function setGlobalSeed(e) {
-    setSeed(e.target.value)
-  }
-
-  let toggleCss = {
-    borderRadius: "5px",
-    background: "CornflowerBlue",
-    color: "white",
-    padding: "3px",
-    marginRight: "10px"
-  }
-
-  let inputCss = {
-    display: seedDisplay,
-    borderRadius: "5px",
-    border: "1px solid CornflowerBlue"
+  function makeHeader() {
+    if (props.seedViz) {
+      return (<input type="text" onChange={reseed} autoFocus />)
+    } else {
+      return (<h1> Boggle </h1>)
+    }
   }
 
   return (
-    <form>
-      <label onClick={toggleSeedDisplay} style={toggleCss}> {msg} </label>
-      <input type="text" id="rngSeed" name="rngSeed"
-             onChange={setGlobalSeed}
-             style={inputCss} />
-    </form>
+    <header className="App-header" onClick={props.showSeeder} >
+      { makeHeader() }
+    </header>
   )
 }
