@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/boggle-react-ts/static/css/main.11b0bed1.chunk.css",
-    "main.js": "/boggle-react-ts/static/js/main.1840960d.chunk.js",
-    "main.js.map": "/boggle-react-ts/static/js/main.1840960d.chunk.js.map",
+    "main.js": "/boggle-react-ts/static/js/main.5e855a27.chunk.js",
+    "main.js.map": "/boggle-react-ts/static/js/main.5e855a27.chunk.js.map",
     "runtime-main.js": "/boggle-react-ts/static/js/runtime-main.c05764c7.js",
     "runtime-main.js.map": "/boggle-react-ts/static/js/runtime-main.c05764c7.js.map",
     "static/css/2.150d169a.chunk.css": "/boggle-react-ts/static/css/2.150d169a.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.74b56b2d.chunk.js",
     "static/css/main.11b0bed1.chunk.css",
-    "static/js/main.1840960d.chunk.js"
+    "static/js/main.5e855a27.chunk.js"
   ]
 }
