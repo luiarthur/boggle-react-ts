@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import * as util from './util'
 
+// TODO: Refactor -- move states out into `App`. On boardShuffle, hide seed.
 export function Seeder() {
   let [seedDisplay, setSeedDisplay] = useState("none")
   let [seed, setSeed] = useState("")
@@ -24,7 +25,7 @@ export function Seeder() {
   }
 
   let toggleCss = {
-    borderRadius: "10px",
+    borderRadius: "5px",
     background: "CornflowerBlue",
     color: "white",
     padding: "3px",
@@ -33,7 +34,7 @@ export function Seeder() {
 
   let inputCss = {
     display: seedDisplay,
-    borderRadius: "10px",
+    borderRadius: "5px",
     border: "1px solid CornflowerBlue"
   }
 

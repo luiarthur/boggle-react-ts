@@ -20,25 +20,19 @@ export function BoardComp(props: {board: Board}) {
   )
 }
 
-export function SolveButton(props: {board: Board}) {
-  let [solution, setSolution] = useState("")
-  let board = props.board
-
-  function solve() {
-    setSolution(board.solve().join(", "))
-  }
-
+export function SolveButton(props: {generateSolution: () => void, solution: string, isSolved: boolean,
+                            solViz: boolean}) {
   const css = {
-    borderRadius: "25px",
-    backgroundColor: "pink",
+    borderRadius: "5px",
+    backgroundColor: "lightgreen",
     border: "none"
   }
 
   return (
     <div>
-      <button style={css} onClick={solve}> Show / Hide Solution </button>
-      <br/> <br/>
-      <p> {solution} </p>
+      <button style={css} onClick={props.generateSolution}> Show / Hide Solution </button>
+      <br/><br/> 
+      <p style={{display: props.solViz ? "inline" : "none"}}> {props.solution} </p>
     </div>
   )
 }

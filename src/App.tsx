@@ -14,23 +14,41 @@ import * as scrabbleDict from './scrabble-dict.json'
 
 function App() {
   const dict = scrabbleDict.scrabbleDict
-  console.log(dict.length)
   const dice = dice16.map(faces => new Die(faces))
+  const minLetters = 3
 
-  const board = new Board(dice, dict, 3)
-  console.log(board.letters.rows.flat())
+  const [board, setBoard] = useState(new Board(dice, dict, minLetters))
+  const [solution, setSolution] = useState("")
+  const [numWords, setNumWords] = useState(0)
+  const [isSolved, setIsSolved] = useState(false)
 
   const shuffleStyle = {
-    borderRadius: "25px",
+    borderRadius: "5px",
     border: "none",
-    background: "darkgrey"
+    background: "pink"
   }
 
   let [letters, setLetters] = useState(board.letters)
+  let [solViz, setSolViz] = useState(false)
 
-  function shakeBoard(e) {
-    board.shuffle()
+  function shakeBoard() {
+    setBoard(new Board(dice, dict, minLetters))
     setLetters(board.letters)
+    setIsSolved(false)
+    setSolViz(false)
+    setSolution("")
+  }
+
+  function generateSolution() {
+    if (!isSolved) {
+      const solutionArray = board.solve()
+      setNumWords(solutionArray.length)
+      setSolution(solutionArray.join(", "))
+      setIsSolved(true)
+      setSolViz(true)
+    } else {
+      setSolViz(!solViz)
+    }
   }
 
   return (
@@ -39,15 +57,19 @@ function App() {
         <h1>Boggle</h1>
       </header>
 
-      <br/> <button onClick={shakeBoard} style={shuffleStyle}> Shuffle </button> <br/> 
-      <br/> <Seeder/> <br/>
+      <br/>
+      <Seeder/>
+      <br/>
+      <button onClick={shakeBoard} style={shuffleStyle}> Shuffle </button>
+      <br/>
+      <br/>
 
       {/* <br/> {dieComps} <br/> */}
       <BoardComp board={board} />
-      <br/> <SolveButton board={board} /> <br/>
-
-
-      {console.log("sanity check: " + dict[util.randint(0, dict.length - 1)])}
+      <br/> 
+        <SolveButton generateSolution={generateSolution} solution={solution} 
+          isSolved={isSolved} solViz={solViz} /> 
+        <br/>
     </div>
   );
 }
