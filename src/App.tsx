@@ -13,20 +13,20 @@ import $ from 'jquery'
 import {Seeder} from './Seeder'
 import * as scrabbleDict from './scrabble-dict.json'
 
-const dict = scrabbleDict.scrabbleDict
-console.log(dict.length)
-const dice = dice16.map(faces => new Die(faces))
-
-const board = new Board(dice, dict, 3)
-console.log(board.letters.rows.flat())
-
-const shuffleStyle = {
-  borderRadius: "25px",
-  border: "none",
-  background: "darkgrey"
-}
-
 function App() {
+  const dict = scrabbleDict.scrabbleDict
+  console.log(dict.length)
+  const dice = dice16.map(faces => new Die(faces))
+
+  const board = new Board(dice, dict, 3)
+  console.log(board.letters.rows.flat())
+
+  const shuffleStyle = {
+    borderRadius: "25px",
+    border: "none",
+    background: "darkgrey"
+  }
+
   let [letters, setLetters] = useState(board.letters)
 
   function shakeBoard(e) {
