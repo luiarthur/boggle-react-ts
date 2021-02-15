@@ -4,6 +4,7 @@ import { Pair } from './Pair'
 import { Die, DieComp } from './Die'
 
 export class Board {
+  dice: Die[]
   dictionary: string[]
   minLetters: number
   dim: number
@@ -11,16 +12,22 @@ export class Board {
   letters: Matrix<string>
   shortDict: string[]
 
-  constructor(diceVal: string[], dictionary: string[], minLetters: number=3) {
+  constructor(dice: Die[], dictionary: string[], minLetters: number=3) {
+    this.dice = dice
     this.dictionary = dictionary
     this.minLetters = minLetters
-    this.numDice = diceVal.length
+    this.numDice = dice.length
     this.dim = Math.sqrt(this.numDice)
-    this.letters = Matrix.fromArray(this.dim, this.dim, diceVal)
+    this.shuffle()
     if (!util.isSquare(this.dim)) {
       throw new Error(`number of dice is ${this.numDice} but must be a square number!`)
     }
     this.shortDict = this.dictionary.filter(w => w.length >= this.minLetters)
+  }
+
+  shuffle() {
+    this.letters = Matrix.fromArray(this.dim, this.dim,
+      util.shuffle(this.dice.map(_ => _.roll())))
   }
 
   // Connects letters from visited `path`.

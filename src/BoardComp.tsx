@@ -3,13 +3,12 @@ import { Matrix } from './Matrix'
 import { Board } from './Board'
 import { DieComp } from './Die'
 
-export function BoardComp(props: {diceVal: string[]}) {
-  let dim = Math.sqrt(props.diceVal.length)
-  let compMat = Matrix.fromArray(dim, dim, props.diceVal)
+export function BoardComp(props: {board: Board}) {
+  let dim = props.board.dim
   return (
     <table style={{marginLeft:"auto", marginRight:"auto"}}>
       {
-        compMat.rows.map(row => (
+        props.board.letters.rows.map(row => (
           <tr>
             {row.map(value => (<th><DieComp value={value}/></th>))}
           </tr>
@@ -19,10 +18,9 @@ export function BoardComp(props: {diceVal: string[]}) {
   )
 }
 
-export function SolveButton(props: {diceVal: string[], dict: string[],
-                            minLetters: number}) {
+export function SolveButton(props: {board: Board}) {
   let [solution, setSolution] = useState("")
-  let board = new Board(props.diceVal, props.dict, props.minLetters)
+  let board = props.board
 
   function solve() {
     setSolution(board.solve().join(", "))
