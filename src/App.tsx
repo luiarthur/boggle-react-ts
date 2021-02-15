@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>WIP</h1>
+        <h1>Boggle</h1>
       </header>
 
       <br/> <button onClick={shakeBoard} style={shuffleStyle}> Shuffle </button> <br/> 
