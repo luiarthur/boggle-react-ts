@@ -4,7 +4,7 @@ import * as util from '../util'
 
 test('Matrix', () => {
   // Test all equal 0.
-  let m = new Matrix(3, 2, 0);
+  let m = Matrix.fill(3, 2, 0);
   for (let r = 0; r < m.nrow; r++) {
     for (let c = 0; c < m.ncol; c++) {
       expect(m.get(r, c)).toEqual(0)
@@ -38,6 +38,15 @@ test('Matrix', () => {
   let m2old = Matrix.fromArray(3, 2, m2.vec())
   let m3 = m2.shuffled()
   expect(m3.get(0, 0)).not.toEqual(m2.get(0, 0))
+
+  // tabulate matrix
+  let mtab = Matrix.tabulate(3, 2, (r, c) => r + c)
+  expect(mtab.get(0, 0)).toEqual(0)
+  expect(mtab.get(0, 1)).toEqual(1)
+  expect(mtab.get(1, 0)).toEqual(1)
+  expect(mtab.get(1, 1)).toEqual(2)
+  expect(mtab.get(2, 0)).toEqual(2)
+  expect(mtab.get(2, 1)).toEqual(3)
 
   // shuffled should not mutate.
   m2old.forEach((r, c) => {

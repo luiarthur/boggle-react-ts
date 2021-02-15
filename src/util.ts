@@ -34,6 +34,10 @@ export function isSquare(x: number) {
   return Math.floor(sqrtx) == sqrtx
 }
 
+export function last<T>(arr: Array<T>): T {
+  return arr[arr.length - 1]
+}
+
 export function zipWithIndex<T>(arr: Array<T>) {
   let result = []
   for (let i = 0, _aLength = arr.length; i < _aLength; i++) {
@@ -41,6 +45,16 @@ export function zipWithIndex<T>(arr: Array<T>) {
     result.push([element, i])
   }
   return result
+}
+
+export function trampoline(fn: Function) {
+  return function(...args) {
+    let result = fn(...args);
+    while(typeof result === 'function') {
+      result = result();
+    }
+    return result;
+  }
 }
 
 /** Code below is mostly for tests. */

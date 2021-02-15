@@ -7,15 +7,33 @@ export class Matrix<T> {
   rows: T[][]
 
   static fromArray<T>(nrow: number,  ncol: number, arr: T[]) {
-    let m = new this(nrow, ncol, arr[0])
-    m.forEach((r, c) => m.set(r, c, arr[r * ncol + c]))
+    return Matrix.tabulate(nrow, ncol, (r, c) => arr[r * ncol + c])
+  }
+
+  static tabulate<T>(nrow: number,  ncol: number, f: (r:number, c:number) => T): Matrix<T> {
+    let m = Matrix.fill(nrow, ncol, f(0, 0))
+    for (let r = 0; r < nrow; r++) {
+      for (let c = 0; c < ncol; c++) {
+        m.set(r, c, f(r, c))
+      }
+    }
     return m
   }
 
-  constructor(nrow: number,  ncol: number, elem: T) {
-    this.nrow = nrow
-    this.ncol = ncol
-    this.rows = Array.from(Array(nrow), () => new Array(ncol).fill(elem));
+  static fill<T>(nrow: number,  ncol: number, elem: T) {
+    let rows = Array.from(Array(nrow), () => new Array(ncol).fill(elem));
+    return new this(rows)
+  }
+
+  constructor(rows: T[][]) {
+    this.rows = rows
+    this.nrow = rows.length
+    this.ncol = rows[0].length
+    rows.forEach(row => {
+      if (row.length != this.ncol) {
+       throw new Error("Number of elements is not the same in each row!")
+      }
+    })
   }
 
   forEach(f: (r:number, c:number) => void) {
@@ -58,5 +76,9 @@ export class Matrix<T> {
     this.forEach((r, c) => {
       this.set(r, c, s.get(r, c))
     })
+  }
+
+  map(f: Function): Matrix<T> {
+    return Matrix.tabulate(this.nrow, this.nrow, (r, c) => f(this.get(r, c)))
   }
 }

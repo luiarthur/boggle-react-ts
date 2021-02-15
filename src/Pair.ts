@@ -1,7 +1,7 @@
 export class Pair {
   x: number
   y: number
-  static moves = [
+  static possibleMoves = [
     new Pair(0, 1),
     new Pair(1, 0),
     new Pair(1, 1),
