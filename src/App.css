@@ -56,3 +56,7 @@
 body {
   padding: 5%;
 }
+
+*:focus {
+  outline: none;
+}

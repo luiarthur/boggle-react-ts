@@ -12,8 +12,10 @@ export function Seeder() {
       setMsg("Enter seed")
     } else {
       setSeedDisplay("none")
-      seed > "" && util.reseed(seed) // submit seed
-      setMsg("Using seed: " + seed)
+      if (seed > "") {
+        util.reseed(seed) // submit seed
+        setMsg("Using seed: " + seed)
+      }
     }
   }
 
@@ -21,7 +23,7 @@ export function Seeder() {
     setSeed(e.target.value)
   }
 
-  let css = {
+  let toggleCss = {
     borderRadius: "10px",
     background: "CornflowerBlue",
     color: "white",
@@ -29,12 +31,18 @@ export function Seeder() {
     marginRight: "10px"
   }
 
+  let inputCss = {
+    display: seedDisplay,
+    borderRadius: "10px",
+    border: "1px solid CornflowerBlue"
+  }
+
   return (
     <form>
-      <label onClick={toggleSeedDisplay} style={css}> {msg} </label>
+      <label onClick={toggleSeedDisplay} style={toggleCss}> {msg} </label>
       <input type="text" id="rngSeed" name="rngSeed"
              onChange={setGlobalSeed}
-             style={{display: seedDisplay, borderRadius: "10px"}} />
+             style={inputCss} />
     </form>
   )
 }
