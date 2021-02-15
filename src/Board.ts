@@ -82,6 +82,7 @@ export class Board {
       // console.log(`\r (${r}, ${c}) / (${this.dim}, ${this.dim})`)
       return this._solve(this.shortDict, [new Pair(r, c)])
     }).map(_ => _.flat())
-    return Array.from(new Set(allSolutions.vec().flat()))
+    let out = Array.from(new Set(allSolutions.vec().flat()))
+    return out.sort().sort((a, b) => a.length - b.length) // sort by first letter then length.
   }
 }
