@@ -8,9 +8,9 @@ export function BoardComp(props: {board: Board}) {
   return (
     <table style={{marginLeft:"auto", marginRight:"auto"}}>
       {
-        props.board.letters.rows.map(row => (
-          <tr>
-            {row.map(value => (<th><DieComp value={value}/></th>))}
+        props.board.letters.rows.map((row, r) => (
+          <tr key={r}>
+            {row.map((value, c) => (<th key={c}><DieComp value={value}/></th>))}
           </tr>
         ))
       }
