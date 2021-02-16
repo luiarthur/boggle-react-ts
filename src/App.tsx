@@ -32,13 +32,13 @@ function App() {
   }
 
   let [letters, setLetters] = useState(board.letters)
-  let [solViz, setSolViz] = useState(false)
+  let [showSolution, setShowSolution] = useState(false)
 
   function shakeBoard() {
     setBoard(new Board(dice, dict, minLetters))
     setLetters(board.letters)
     setIsSolved(false)
-    setSolViz(false)
+    setShowSolution(false)
     setSolution("")
     setSeedViz(false)
   }
@@ -49,9 +49,9 @@ function App() {
       setNumWords(solutionArray.length)
       setSolution(solutionArray.join(", "))
       setIsSolved(true)
-      setSolViz(true)
+      setShowSolution(true)
     } else {
-      setSolViz(!solViz)
+      setShowSolution(!showSolution)
     }
   }
 
@@ -69,7 +69,7 @@ function App() {
       <BoardComp board={board} />
       <br/> 
         <SolveButton generateSolution={generateSolution} solution={solution} 
-          isSolved={isSolved} solViz={solViz} /> 
+          isSolved={isSolved} showSolution={showSolution} /> 
         <br/>
     </div>
   );
