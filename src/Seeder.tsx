@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import * as util from './util'
 
-// TODO: Refactor -- move states out into `App`. On boardShuffle, hide seed.
+// TODO: Refactor -- Eventually, we want to pass an rng into board.
 export function Seeder(props: {seedViz: boolean, showSeeder: () => void}) {
 
   function reseed(e) {
     const value = e.target.value
+    console.log("Reseeding")
     if (value == "") {
       util.reseed(Math.random().toString())
     } else {

@@ -18,7 +18,9 @@ function App() {
   const minLetters = 3
 
   const [seedViz, setSeedViz] = useState(false)
-  const [board, setBoard] = useState(new Board(dice, dict, minLetters))
+  // NOTE: Doing `useState(new Board(dice, dict, minLetters))` led to
+  // unintended behavior.
+  const [board, setBoard] = useState(() => new Board(dice, dict, minLetters))
   const [solution, setSolution] = useState("")
   const [numWords, setNumWords] = useState(0)
   const [isSolved, setIsSolved] = useState(false)
@@ -35,6 +37,7 @@ function App() {
   let [showSolution, setShowSolution] = useState(false)
 
   function shakeBoard() {
+    // NOTE: Should this also be `() => new Board(dice, dict, minLetters)`?
     setBoard(new Board(dice, dict, minLetters))
     setLetters(board.letters)
     setIsSolved(false)
@@ -47,6 +50,7 @@ function App() {
     if (!isSolved) {
       const solutionArray = board.solve()
       setNumWords(solutionArray.length)
+      console.log("Number of words in solution: " + solutionArray.length)
       setSolution(solutionArray.join(", "))
       setIsSolved(true)
       setShowSolution(true)
