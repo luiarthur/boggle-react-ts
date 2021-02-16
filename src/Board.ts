@@ -18,14 +18,14 @@ export class Board {
     this.minLetters = minLetters
     this.numDice = dice.length
     this.dim = Math.sqrt(this.numDice)
-    this.shuffle()
+    this.shake()
     if (!util.isSquare(this.dim)) {
       throw new Error(`number of dice is ${this.numDice} but must be a square number!`)
     }
     this.shortDict = this.dictionary.filter(w => w.length >= this.minLetters)
   }
 
-  shuffle() {
+  shake() {
     this.letters = Matrix.fromArray(this.dim, this.dim,
       util.shuffle(this.dice.map(_ => _.roll())))
   }
