@@ -33,7 +33,7 @@ export function SolveButton(props: {generateSolution: () => void, solution: stri
     <div>
       <button style={css} onClick={props.generateSolution}> Show / Hide Solution </button>
       <br/><br/> 
-      <p style={{display: props.showSolution ? "inline" : "none"}}> {props.solution} </p>
+      { props.showSolution && <p> {props.solution} </p> }
     </div>
   )
 }
