@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/boggle-react-ts/static/css/main.a213d3f4.chunk.css",
-    "main.js": "/boggle-react-ts/static/js/main.cd35d55e.chunk.js",
-    "main.js.map": "/boggle-react-ts/static/js/main.cd35d55e.chunk.js.map",
+    "main.js": "/boggle-react-ts/static/js/main.9ff403df.chunk.js",
+    "main.js.map": "/boggle-react-ts/static/js/main.9ff403df.chunk.js.map",
     "runtime-main.js": "/boggle-react-ts/static/js/runtime-main.06e8f611.js",
     "runtime-main.js.map": "/boggle-react-ts/static/js/runtime-main.06e8f611.js.map",
     "static/css/2.150d169a.chunk.css": "/boggle-react-ts/static/css/2.150d169a.chunk.css",
-    "static/js/2.e5dd9189.chunk.js": "/boggle-react-ts/static/js/2.e5dd9189.chunk.js",
-    "static/js/2.e5dd9189.chunk.js.map": "/boggle-react-ts/static/js/2.e5dd9189.chunk.js.map",
+    "static/js/2.f6f18768.chunk.js": "/boggle-react-ts/static/js/2.f6f18768.chunk.js",
+    "static/js/2.f6f18768.chunk.js.map": "/boggle-react-ts/static/js/2.f6f18768.chunk.js.map",
     "static/js/3.d0a4f5bb.chunk.js": "/boggle-react-ts/static/js/3.d0a4f5bb.chunk.js",
     "static/js/3.d0a4f5bb.chunk.js.map": "/boggle-react-ts/static/js/3.d0a4f5bb.chunk.js.map",
     "index.html": "/boggle-react-ts/index.html",
     "static/css/2.150d169a.chunk.css.map": "/boggle-react-ts/static/css/2.150d169a.chunk.css.map",
     "static/css/main.a213d3f4.chunk.css.map": "/boggle-react-ts/static/css/main.a213d3f4.chunk.css.map",
-    "static/js/2.e5dd9189.chunk.js.LICENSE.txt": "/boggle-react-ts/static/js/2.e5dd9189.chunk.js.LICENSE.txt"
+    "static/js/2.f6f18768.chunk.js.LICENSE.txt": "/boggle-react-ts/static/js/2.f6f18768.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.06e8f611.js",
     "static/css/2.150d169a.chunk.css",
-    "static/js/2.e5dd9189.chunk.js",
+    "static/js/2.f6f18768.chunk.js",
     "static/css/main.a213d3f4.chunk.css",
-    "static/js/main.cd35d55e.chunk.js"
+    "static/js/main.9ff403df.chunk.js"
   ]
 }
